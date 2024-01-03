@@ -7,7 +7,7 @@ public class ConnectionFactory {
     public  Connection recuperarConexao() {
         try {
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/" +
-                    "boc_app?user=root&password=<insert password>");
+                    "boc_app?user=root&password=<insert senha>");
 
 
         } catch (SQLException e) {
