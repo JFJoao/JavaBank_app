@@ -39,7 +39,7 @@ public class ContaService {
 
         // contas.add(conta); - estatico
 
-        String sql = "INSERT INTO conta (numero, saldo, clinete_nome, cliente_cpf, cliente_email)" +
+        String sql = "INSERT INTO conta (numero, saldo, cliente_nome, cliente_cpf, cliente_email)" +
                 "VALUES (?, ?, ?, ?, ?)";
 
         Connection conn = connection.recuperarConexao();
@@ -52,6 +52,8 @@ public class ContaService {
             preparedStatement.setString(3, dadosDaConta.dadosCliente().nome());
             preparedStatement.setString(4, dadosDaConta.dadosCliente().cpf());
             preparedStatement.setString(5, dadosDaConta.dadosCliente().email());
+
+            preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
