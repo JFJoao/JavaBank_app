@@ -1,7 +1,7 @@
 package br.com.alura.bytebank.domain.conta;
 import br.com.alura.bytebank.domain.cliente.Cliente;
 import br.com.alura.bytebank.domain.cliente.DadosCadastroCliente;
-
+import br.com.alura.bytebank.domain.RegraDeNegocioException;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +20,7 @@ public class ContaDAO {
     public void salvar(DadosAberturaConta dadosDaConta) {
         var cliente = new Cliente(dadosDaConta.dadosCliente());
         BigDecimal saldo = null;
-        var conta = new Conta(dadosDaConta.numero(), saldo, cliente);
+        var conta = new Conta(dadosDaConta.numero(), BigDecimal.ZERO, cliente);
 
         String sql = "INSERT INTO conta (numero, saldo, cliente_nome, cliente_cpf, cliente_email)" +
                 "VALUES (?, ?, ?, ?, ?)";
@@ -126,5 +126,10 @@ public class ContaDAO {
         }
         return conta;
     }
+
+
+
+
+
 
 }
