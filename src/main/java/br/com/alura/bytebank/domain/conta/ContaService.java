@@ -89,4 +89,10 @@ public class ContaService {
         new ContaDAO(conn).alterar(conta.getNumero(), valor);
     }
 
+    public void realizarTransferencia(Integer numeroDaContaOrigem, Integer numeroDaContaDestino,
+                                      BigDecimal valor) {
+        this.realizarSaque(numeroDaContaOrigem, valor);
+        this.realizarDeposito(numeroDaContaDestino, valor);
+    }
+
 }
